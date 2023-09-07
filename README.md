@@ -1,4 +1,5 @@
 ## Đây là source code của ứng dụng TODO APP bằng React + Redux
+
 Video tutorial: https://youtu.be/g_K1w8e0lLo \
 Live Demo: https://focused-engelbart-3d0ac1.netlify.app/
 
@@ -72,6 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 
 ### đây là xyz
 ### tử xem complit như nào 
