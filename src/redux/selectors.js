@@ -6,4 +6,4 @@ export const todoListSelector = (state) => {
    
 }
 
-export const searchTextSelector = (state) => state.filter.search
+ 
