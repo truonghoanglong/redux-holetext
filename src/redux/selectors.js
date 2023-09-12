@@ -1,29 +1,16 @@
-import { createSelector } from "reselect"
+import { createSelector } from "@reduxjs/toolkit"
 
 
-export const searchTextSelector = (state) => state.filters.search
-export const StatusFilterSelector = (state) => state.filters.status
-export const todoListSelector = (state) => state.todoList
-export const StatusPrioritiesSelector = (state) => state.filters.priority
-
-export const filterPrioritiesSelector = (state) => state.filters.priorities
+export const searchTextSelector = (state) => state.filters.search;
+export const filterStatusSelector = (state) => state.filters.status;
+export const filterPrioritiesSelector = (state) => state.filters.priorities;
+export const todoListSelector = (state) => state.todoList;
 
 
-
-
-// export const todoListSelector = (state) => {
-
-//     const searchText = searchTextSelector(state)
-
-//     const todosRemanining = state.todoList.filter((todo)=>{
-//         return todo.name.includes(state.filter.search)
-//     })
-//     return  todosRemanining
-// }
 
 export const todosRemaniningSelector = createSelector(
     todoListSelector,
-    StatusFilterSelector,
+    filterStatusSelector,
     searchTextSelector,
     filterPrioritiesSelector,
     (todoList,status, searchText,priorities) => {
@@ -40,3 +27,14 @@ export const todosRemaniningSelector = createSelector(
         })
     }
 )
+
+
+// export const todoListSelector = (state) => {
+
+//     const searchText = searchTextSelector(state)
+
+//     const todosRemanining = state.todoList.filter((todo)=>{
+//         return todo.name.includes(state.filter.search)
+//     })
+//     return  todosRemanining
+// }
