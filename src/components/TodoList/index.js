@@ -1,27 +1,29 @@
 import { Col, Row, Input, Button, Select, Tag } from 'antd';
 import Todo from '../Todo';
 import { useDispatch,useSelector } from 'react-redux';
-import { addTodo } from '../../redux/actions';
+// import { addTodo } from '../../redux/actions';
 import { v4 as uuidv4 } from 'uuid'
 import { useState } from 'react';
-import { todoListSelector ,searchTextSelector} from '../../redux/selectors';
+import { todosRemaniningSelector } from '../../redux/selectors';
+import todoListSlice from "./todosSlice";
 
 export default function TodoList() {
 
   const [todoName, setTodoName] = useState('')
   const [priority, setPriority] = useState('Medium')
 
-  const todoList = useSelector( todoListSelector)
-  const searchText = useSelector( searchTextSelector)
-  console.log(searchText);
+  const todoList = useSelector( todosRemaniningSelector)
+  // const searchText = useSelector( searchTextSelector)
+ 
 
   const dispatch = useDispatch()
   const handleAddButtonClick= () => {
-    dispatch(addTodo({
-      id:uuidv4(),
-      name: todoName,
-      priority: priority,
-      compile: false,
+    dispatch(
+      todoListSlice.actions.addTodo({
+        id:uuidv4(),
+        name: todoName,
+        priority: priority,
+        completed: false,
     }))
     setTodoName('')
     setPriority('Medium')
@@ -33,7 +35,7 @@ export default function TodoList() {
         {
           todoList?.map((item)=>{
             return(
-              <Todo key={item.id} name={item.name} prioriry={item.priority} />
+              <Todo key={item.id} id={item.id} name={item.name} prioriry={item.priority} completed={item.completed} />
             )
           })
         }
